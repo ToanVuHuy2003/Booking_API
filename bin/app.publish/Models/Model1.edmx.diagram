@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="731c7e15653948428165cc5057c08e7c" Name="Diagram1" ZoomLevel="124">
+        <EntityTypeShape EntityType="CinemaModel.DoAn" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.HoaDon" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.KhachHang" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.KhungGio" Width="1.5" PointX="8.125" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.LoaiVe" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Phim" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.sysdiagram" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Thu" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CinemaModel.fk_HoaDon_DoAN" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.fk_HoaDon_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.fk_HoaDon_LoaiVe" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.fk_HoaDon_Phim" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

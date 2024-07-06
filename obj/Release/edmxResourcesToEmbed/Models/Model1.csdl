@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DoAn">
+    <Key>
+      <PropertyRef Name="MaDoAn" />
+    </Key>
+    <Property Name="MaDoAn" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenDoAn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Double" />
+    <Property Name="Mota" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_DoAN" FromRole="DoAn" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHoaDon" />
+    </Key>
+    <Property Name="MaHoaDon" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaKH" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MaPhim" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MaVe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MaDoAn" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TongTien" Type="Double" />
+    <NavigationProperty Name="DoAn" Relationship="Self.fk_HoaDon_DoAN" FromRole="HoaDon" ToRole="DoAn" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.fk_HoaDon_KhachHang" FromRole="HoaDon" ToRole="KhachHang" />
+    <NavigationProperty Name="LoaiVe" Relationship="Self.fk_HoaDon_LoaiVe" FromRole="HoaDon" ToRole="LoaiVe" />
+    <NavigationProperty Name="Phim" Relationship="Self.fk_HoaDon_Phim" FromRole="HoaDon" ToRole="Phim" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HoTenKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_KhachHang" FromRole="KhachHang" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="KhungGio">
+    <Key>
+      <PropertyRef Name="MaGio" />
+    </Key>
+    <Property Name="MaGio" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="KhungGio1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LoaiVe">
+    <Key>
+      <PropertyRef Name="MaVe" />
+    </Key>
+    <Property Name="MaVe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenVe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TienVe" Type="Double" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_LoaiVe" FromRole="LoaiVe" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="Phim">
+    <Key>
+      <PropertyRef Name="MaPhim" />
+    </Key>
+    <Property Name="MaPhim" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenPhim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AnhPhim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DaoDien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TheLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgonNgu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhongChieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_Phim" FromRole="Phim" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Thu">
+    <Key>
+      <PropertyRef Name="MaThu" />
+    </Key>
+    <Property Name="MaThu" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Thu1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="fk_HoaDon_DoAN">
+    <End Role="DoAn" Type="Self.DoAn" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoAn">
+        <PropertyRef Name="MaDoAn" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaDoAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HoaDon_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HoaDon_LoaiVe">
+    <End Role="LoaiVe" Type="Self.LoaiVe" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiVe">
+        <PropertyRef Name="MaVe" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HoaDon_Phim">
+    <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phim">
+        <PropertyRef Name="MaPhim" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaPhim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cinemaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DoAns" EntityType="Self.DoAn" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="KhungGios" EntityType="Self.KhungGio" />
+    <EntitySet Name="LoaiVes" EntityType="Self.LoaiVe" />
+    <EntitySet Name="Phims" EntityType="Self.Phim" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Thus" EntityType="Self.Thu" />
+    <AssociationSet Name="fk_HoaDon_DoAN" Association="Self.fk_HoaDon_DoAN">
+      <End Role="DoAn" EntitySet="DoAns" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HoaDon_KhachHang" Association="Self.fk_HoaDon_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HoaDon_LoaiVe" Association="Self.fk_HoaDon_LoaiVe">
+      <End Role="LoaiVe" EntitySet="LoaiVes" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HoaDon_Phim" Association="Self.fk_HoaDon_Phim">
+      <End Role="Phim" EntitySet="Phims" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

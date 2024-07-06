@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DoAn">
+    <Key>
+      <PropertyRef Name="MaDoAn" />
+    </Key>
+    <Property Name="MaDoAn" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TenDoAn" Type="nvarchar" MaxLength="100" />
+    <Property Name="Gia" Type="float" />
+    <Property Name="Mota" Type="nvarchar" MaxLength="100" />
+    <Property Name="HinhAnh" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHoaDon" />
+    </Key>
+    <Property Name="MaHoaDon" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="MaKH" Type="char" MaxLength="1" />
+    <Property Name="MaPhim" Type="char" MaxLength="1" />
+    <Property Name="MaVe" Type="char" MaxLength="1" />
+    <Property Name="MaDoAn" Type="char" MaxLength="1" />
+    <Property Name="TongTien" Type="float" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="HoTenKH" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="100" />
+    <Property Name="SDT" Type="int" />
+    <Property Name="AnhDaiDien" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="KhungGio">
+    <Key>
+      <PropertyRef Name="MaGio" />
+    </Key>
+    <Property Name="MaGio" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="KhungGio" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LoaiVe">
+    <Key>
+      <PropertyRef Name="MaVe" />
+    </Key>
+    <Property Name="MaVe" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TenVe" Type="nvarchar" MaxLength="50" />
+    <Property Name="TienVe" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'cinema.dbo.NgayGioChieu' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="NgayGioChieu">
+          <Property Name="MaPhim" Type="char" MaxLength="1" />
+          <Property Name="MaGio" Type="char" MaxLength="1" />
+          <Property Name="MaThu" Type="char" MaxLength="1" />
+        </EntityType>-->
+  <EntityType Name="Phim">
+    <Key>
+      <PropertyRef Name="MaPhim" />
+    </Key>
+    <Property Name="MaPhim" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TenPhim" Type="nvarchar" MaxLength="100" />
+    <Property Name="AnhPhim" Type="nvarchar" MaxLength="100" />
+    <Property Name="DaoDien" Type="nvarchar" MaxLength="100" />
+    <Property Name="TheLoai" Type="nvarchar" MaxLength="100" />
+    <Property Name="NgonNgu" Type="nvarchar" MaxLength="100" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
+    <Property Name="PhongChieu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Thu">
+    <Key>
+      <PropertyRef Name="MaThu" />
+    </Key>
+    <Property Name="MaThu" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Thu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'cinema.dbo.VePhim' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="VePhim">
+          <Property Name="MaPhim" Type="char" MaxLength="1" />
+          <Property Name="MaVe" Type="char" MaxLength="1" />
+        </EntityType>-->
+  <Association Name="fk_HoaDon_DoAN">
+    <End Role="DoAn" Type="Self.DoAn" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoAn">
+        <PropertyRef Name="MaDoAn" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaDoAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HoaDon_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HoaDon_LoaiVe">
+    <End Role="LoaiVe" Type="Self.LoaiVe" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiVe">
+        <PropertyRef Name="MaVe" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HoaDon_Phim">
+    <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phim">
+        <PropertyRef Name="MaPhim" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaPhim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'cinema.dbo.NgayGioChieu' is referenced by a relationship, but cannot be found.
+        <Association Name="fk_KhungGio_GioChieu" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'cinema.dbo.NgayGioChieu' is referenced by a relationship, but cannot be found.
+        <Association Name="fk_Phim_GioChieu" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'cinema.dbo.NgayGioChieu' is referenced by a relationship, but cannot be found.
+        <Association Name="fk_Thu_GioChieu" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'cinema.dbo.VePhim' is referenced by a relationship, but cannot be found.
+        <Association Name="fk_VePhim_LoaiVe" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'cinema.dbo.VePhim' is referenced by a relationship, but cannot be found.
+        <Association Name="fk_VePhim_Phim" />-->
+  <EntityContainer Name="CinemaModelStoreContainer">
+    <EntitySet Name="DoAn" EntityType="Self.DoAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhungGio" EntityType="Self.KhungGio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiVe" EntityType="Self.LoaiVe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Phim" EntityType="Self.Phim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Thu" EntityType="Self.Thu" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_HoaDon_DoAN" Association="Self.fk_HoaDon_DoAN">
+      <End Role="DoAn" EntitySet="DoAn" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HoaDon_KhachHang" Association="Self.fk_HoaDon_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HoaDon_LoaiVe" Association="Self.fk_HoaDon_LoaiVe">
+      <End Role="LoaiVe" EntitySet="LoaiVe" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HoaDon_Phim" Association="Self.fk_HoaDon_Phim">
+      <End Role="Phim" EntitySet="Phim" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
