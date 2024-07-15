@@ -13,48 +13,48 @@ using FlutterCinemaAPI.Models;
 
 namespace FlutterCinemaAPI.Controllers.WebAPI
 {
-    public class PhimController : ApiController
+    public class DatVeController : ApiController
     {
         private cinemaAPIEntities db = new cinemaAPIEntities();
 
-        // GET: api/Phim
+        // GET: api/DatVe
         [HttpGet]
-        public async Task<List<Phim>> Get()
+        public async Task<List<DatVe>> Get()
         {
-            List<Phim> phim = await db.Phims.ToListAsync();
-            return phim;
+            List<DatVe> datVe = await db.DatVes.ToListAsync();
+            return datVe;
         }
 
-        // GET: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // GET: api/DatVe/5
+        [ResponseType(typeof(DatVe))]
         [HttpGet]
         public async Task<IHttpActionResult> Get(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            DatVe datVe = await db.DatVes.FindAsync(id);
+            if (datVe == null)
             {
                 return NotFound();
             }
 
-            return Ok(phim);
+            return Ok(datVe);
         }
 
-        // PUT: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // PUT: api/DatVe/5
+        [ResponseType(typeof(DatVe))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, Phim phim)
+        public async Task<IHttpActionResult> Put(string id, DatVe datVe)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != phim.MaPhim)
+            if (id != datVe.MaDat)
             {
                 return BadRequest();
             }
 
-            db.Entry(phim).State = EntityState.Modified;
+            db.Entry(datVe).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +62,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PhimExists(id))
+                if (!DatVeExists(id))
                 {
                     return NotFound();
                 }
@@ -72,20 +72,20 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return Ok(phim);
+            return Ok(datVe);
         }
 
-        // POST: api/Phim
-        [ResponseType(typeof(Phim))]
+        // POST: api/DatVe
+        [ResponseType(typeof(DatVe))]
         [HttpPost]
-        public async Task<IHttpActionResult> Post(Phim phim)
+        public async Task<IHttpActionResult> Post(DatVe datVe)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Phims.Add(phim);
+            db.DatVes.Add(datVe);
 
             try
             {
@@ -93,7 +93,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateException)
             {
-                if (PhimExists(phim.MaPhim))
+                if (DatVeExists(datVe.MaDat))
                 {
                     return Conflict();
                 }
@@ -103,24 +103,24 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = phim.MaPhim }, phim);
+            return CreatedAtRoute("DefaultApi", new { id = datVe.MaDat }, datVe);
         }
 
-        // DELETE: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // DELETE: api/DatVe/5
+        [ResponseType(typeof(DatVe))]
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            DatVe datVe = await db.DatVes.FindAsync(id);
+            if (datVe == null)
             {
                 return NotFound();
             }
 
-            db.Phims.Remove(phim);
+            db.DatVes.Remove(datVe);
             await db.SaveChangesAsync();
 
-            return Ok(phim);
+            return Ok(datVe);
         }
 
         protected override void Dispose(bool disposing)
@@ -132,9 +132,9 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool PhimExists(string id)
+        private bool DatVeExists(string id)
         {
-            return db.Phims.Count(e => e.MaPhim == id) > 0;
+            return db.DatVes.Count(e => e.MaDat == id) > 0;
         }
     }
 }

@@ -13,48 +13,48 @@ using FlutterCinemaAPI.Models;
 
 namespace FlutterCinemaAPI.Controllers.WebAPI
 {
-    public class PhimController : ApiController
+    public class TheLoaiController : ApiController
     {
         private cinemaAPIEntities db = new cinemaAPIEntities();
 
-        // GET: api/Phim
+        // GET: api/TheLoai
         [HttpGet]
-        public async Task<List<Phim>> Get()
+        public async Task<List<TheLoai>> Get()
         {
-            List<Phim> phim = await db.Phims.ToListAsync();
-            return phim;
+            List<TheLoai> theLoai = await db.TheLoais.ToListAsync();
+            return theLoai;
         }
 
-        // GET: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // GET: api/TheLoai/5
+        [ResponseType(typeof(TheLoai))]
         [HttpGet]
         public async Task<IHttpActionResult> Get(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            TheLoai theLoai = await db.TheLoais.FindAsync(id);
+            if (theLoai == null)
             {
                 return NotFound();
             }
 
-            return Ok(phim);
+            return Ok(theLoai);
         }
 
-        // PUT: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // PUT: api/TheLoai/5
+        [ResponseType(typeof(TheLoai))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, Phim phim)
+        public async Task<IHttpActionResult> Put(string id, TheLoai theLoai)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != phim.MaPhim)
+            if (id != theLoai.MaTL)
             {
                 return BadRequest();
             }
 
-            db.Entry(phim).State = EntityState.Modified;
+            db.Entry(theLoai).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +62,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PhimExists(id))
+                if (!TheLoaiExists(id))
                 {
                     return NotFound();
                 }
@@ -72,20 +72,20 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return Ok(phim);
+            return Ok(theLoai);
         }
 
-        // POST: api/Phim
-        [ResponseType(typeof(Phim))]
+        // POST: api/TheLoai
+        [ResponseType(typeof(TheLoai))]
         [HttpPost]
-        public async Task<IHttpActionResult> Post(Phim phim)
+        public async Task<IHttpActionResult> Post(TheLoai theLoai)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Phims.Add(phim);
+            db.TheLoais.Add(theLoai);
 
             try
             {
@@ -93,7 +93,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateException)
             {
-                if (PhimExists(phim.MaPhim))
+                if (TheLoaiExists(theLoai.MaTL))
                 {
                     return Conflict();
                 }
@@ -103,24 +103,24 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = phim.MaPhim }, phim);
+            return CreatedAtRoute("DefaultApi", new { id = theLoai.MaTL }, theLoai);
         }
 
-        // DELETE: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // DELETE: api/TheLoai/5
+        [ResponseType(typeof(TheLoai))]
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            TheLoai theLoai = await db.TheLoais.FindAsync(id);
+            if (theLoai == null)
             {
                 return NotFound();
             }
 
-            db.Phims.Remove(phim);
+            db.TheLoais.Remove(theLoai);
             await db.SaveChangesAsync();
 
-            return Ok(phim);
+            return Ok(theLoai);
         }
 
         protected override void Dispose(bool disposing)
@@ -132,9 +132,9 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool PhimExists(string id)
+        private bool TheLoaiExists(string id)
         {
-            return db.Phims.Count(e => e.MaPhim == id) > 0;
+            return db.TheLoais.Count(e => e.MaTL == id) > 0;
         }
     }
 }

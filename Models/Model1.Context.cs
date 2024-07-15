@@ -13,10 +13,10 @@ namespace FlutterCinemaAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class cinemaEntities : DbContext
+    public partial class cinemaAPIEntities : DbContext
     {
-        public cinemaEntities()
-            : base("name=cinemaEntities")
+        public cinemaAPIEntities()
+            : base("name=cinemaAPIEntities")
         {
         }
     
@@ -25,13 +25,11 @@ namespace FlutterCinemaAPI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DoAn> DoAns { get; set; }
+        public virtual DbSet<DatVe> DatVes { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<KhungGio> KhungGios { get; set; }
-        public virtual DbSet<LoaiVe> LoaiVes { get; set; }
         public virtual DbSet<Phim> Phims { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Thu> Thus { get; set; }
+        public virtual DbSet<SuatChieu> SuatChieux { get; set; }
+        public virtual DbSet<TheLoai> TheLoais { get; set; }
     }
 }

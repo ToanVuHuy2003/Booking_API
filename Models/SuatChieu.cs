@@ -12,19 +12,26 @@ namespace FlutterCinemaAPI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LoaiVe
+    public partial class SuatChieu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LoaiVe()
+        public SuatChieu()
         {
+            this.DatVes = new HashSet<DatVe>();
             this.HoaDons = new HashSet<HoaDon>();
         }
     
-        public string MaVe { get; set; }
-        public string TenVe { get; set; }
-        public Nullable<double> TienVe { get; set; }
+        public string MaSC { get; set; }
+        public string MaPhim { get; set; }
+        public string ThoiGianBD { get; set; }
+        public string ThoiGianKT { get; set; }
+        public string NgayChieu { get; set; }
+        public string RapChieu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DatVe> DatVes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual Phim Phim { get; set; }
     }
 }

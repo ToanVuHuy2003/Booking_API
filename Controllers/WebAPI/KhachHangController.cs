@@ -1,7 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -9,47 +13,48 @@ using FlutterCinemaAPI.Models;
 
 namespace FlutterCinemaAPI.Controllers.WebAPI
 {
-    public class LoaiVeController : ApiController
+    public class KhachHangController : ApiController
     {
-        private cinemaEntities db = new cinemaEntities();
+        private cinemaAPIEntities db = new cinemaAPIEntities();
 
-        // GET: api/LoaiVe
+        // GET: api/KhachHang
         [HttpGet]
-        public IQueryable<LoaiVe> Get()
+        public async Task<List<KhachHang>> Get()
         {
-            return db.LoaiVes;
+            List<KhachHang> khachHang = await db.KhachHangs.ToListAsync();
+            return khachHang;
         }
 
-        // GET: api/LoaiVe/5
-        [ResponseType(typeof(LoaiVe))]
+        // GET: api/KhachHang/5
+        [ResponseType(typeof(KhachHang))]
         [HttpGet]
         public async Task<IHttpActionResult> Get(string id)
         {
-            LoaiVe loaiVe = await db.LoaiVes.FindAsync(id);
-            if (loaiVe == null)
+            KhachHang khachHang = await db.KhachHangs.FindAsync(id);
+            if (khachHang == null)
             {
                 return NotFound();
             }
 
-            return Ok(loaiVe);
+            return Ok(khachHang);
         }
 
-        // PUT: api/LoaiVe/5
-        [ResponseType(typeof(void))]
+        // PUT: api/KhachHang/5
+        [ResponseType(typeof(KhachHang))]
         [HttpPut]
-        public async Task<IHttpActionResult> PutLoaiVe(string id, LoaiVe loaiVe)
+        public async Task<IHttpActionResult> Put(string id, KhachHang khachHang)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != loaiVe.MaVe)
+            if (id != khachHang.MaKH)
             {
                 return BadRequest();
             }
 
-            db.Entry(loaiVe).State = EntityState.Modified;
+            db.Entry(khachHang).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +62,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!LoaiVeExists(id))
+                if (!KhachHangExists(id))
                 {
                     return NotFound();
                 }
@@ -67,20 +72,20 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(khachHang);
         }
 
-        // POST: api/LoaiVe
-        [ResponseType(typeof(LoaiVe))]
+        // POST: api/KhachHang
+        [ResponseType(typeof(KhachHang))]
         [HttpPost]
-        public async Task<IHttpActionResult> PostLoaiVe(LoaiVe loaiVe)
+        public async Task<IHttpActionResult> Post(KhachHang khachHang)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.LoaiVes.Add(loaiVe);
+            db.KhachHangs.Add(khachHang);
 
             try
             {
@@ -88,7 +93,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateException)
             {
-                if (LoaiVeExists(loaiVe.MaVe))
+                if (KhachHangExists(khachHang.MaKH))
                 {
                     return Conflict();
                 }
@@ -98,24 +103,24 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = loaiVe.MaVe }, loaiVe);
+            return CreatedAtRoute("DefaultApi", new { id = khachHang.MaKH }, khachHang);
         }
 
-        // DELETE: api/LoaiVe/5
-        [ResponseType(typeof(LoaiVe))]
+        // DELETE: api/KhachHang/5
+        [ResponseType(typeof(KhachHang))]
         [HttpDelete]
-        public async Task<IHttpActionResult> DeleteLoaiVe(string id)
+        public async Task<IHttpActionResult> Delete(string id)
         {
-            LoaiVe loaiVe = await db.LoaiVes.FindAsync(id);
-            if (loaiVe == null)
+            KhachHang khachHang = await db.KhachHangs.FindAsync(id);
+            if (khachHang == null)
             {
                 return NotFound();
             }
 
-            db.LoaiVes.Remove(loaiVe);
+            db.KhachHangs.Remove(khachHang);
             await db.SaveChangesAsync();
 
-            return Ok(loaiVe);
+            return Ok(khachHang);
         }
 
         protected override void Dispose(bool disposing)
@@ -127,9 +132,9 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool LoaiVeExists(string id)
+        private bool KhachHangExists(string id)
         {
-            return db.LoaiVes.Count(e => e.MaVe == id) > 0;
+            return db.KhachHangs.Count(e => e.MaKH == id) > 0;
         }
     }
 }

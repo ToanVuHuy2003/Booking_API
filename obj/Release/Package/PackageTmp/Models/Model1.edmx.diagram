@@ -4,19 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="731c7e15653948428165cc5057c08e7c" Name="Diagram1" ZoomLevel="124">
-        <EntityTypeShape EntityType="CinemaModel.DoAn" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaModel.HoaDon" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaModel.KhachHang" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaModel.KhungGio" Width="1.5" PointX="8.125" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaModel.LoaiVe" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaModel.Phim" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaModel.sysdiagram" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinemaModel.Thu" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="CinemaModel.fk_HoaDon_DoAN" ManuallyRouted="false" />
-        <AssociationConnector Association="CinemaModel.fk_HoaDon_KhachHang" ManuallyRouted="false" />
-        <AssociationConnector Association="CinemaModel.fk_HoaDon_LoaiVe" ManuallyRouted="false" />
-        <AssociationConnector Association="CinemaModel.fk_HoaDon_Phim" ManuallyRouted="false" />
+      <Diagram DiagramId="5729f67d607e4920834d2bd9a9cb4598" Name="Diagram1">
+        <EntityTypeShape EntityType="cinemaAPIModel.DatVe" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaAPIModel.HoaDon" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaAPIModel.KhachHang" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaAPIModel.Phim" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaAPIModel.SuatChieu" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="cinemaAPIModel.TheLoai" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="cinemaAPIModel.fk_DatVe_KH" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaAPIModel.fk_DatVe_SC" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaAPIModel.fk_HoaDon_DatVe" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaAPIModel.fk_HoaDon_KH" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaAPIModel.fk_HoaDon_SC" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaAPIModel.fk_Phim_TheLoai" ManuallyRouted="false" />
+        <AssociationConnector Association="cinemaAPIModel.fk_SC_Phim" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

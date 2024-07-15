@@ -14,16 +14,15 @@ namespace FlutterCinemaAPI.Models
     
     public partial class HoaDon
     {
-        public string MaHoaDon { get; set; }
+        public string MaHD { get; set; }
         public string MaKH { get; set; }
-        public string MaPhim { get; set; }
-        public string MaVe { get; set; }
-        public string MaDoAn { get; set; }
-        public Nullable<double> TongTien { get; set; }
+        public string MaSC { get; set; }
+        public string MaDat { get; set; }
+        public Nullable<int> SoLuong { get; set; }
+        public Nullable<System.DateTime> ThoiGianTT { get; set; }
     
-        public virtual DoAn DoAn { get; set; }
+        public virtual DatVe DatVe { get; set; }
         public virtual KhachHang KhachHang { get; set; }
-        public virtual LoaiVe LoaiVe { get; set; }
-        public virtual Phim Phim { get; set; }
+        public virtual SuatChieu SuatChieu { get; set; }
     }
 }

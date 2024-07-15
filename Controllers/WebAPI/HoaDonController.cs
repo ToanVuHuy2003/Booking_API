@@ -13,48 +13,48 @@ using FlutterCinemaAPI.Models;
 
 namespace FlutterCinemaAPI.Controllers.WebAPI
 {
-    public class PhimController : ApiController
+    public class HoaDonController : ApiController
     {
         private cinemaAPIEntities db = new cinemaAPIEntities();
 
-        // GET: api/Phim
+        // GET: api/HoaDon
         [HttpGet]
-        public async Task<List<Phim>> Get()
+        public async Task<List<HoaDon>> Get()
         {
-            List<Phim> phim = await db.Phims.ToListAsync();
-            return phim;
+            List<HoaDon> hoaDon = await db.HoaDons.ToListAsync();
+            return hoaDon;
         }
 
-        // GET: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // GET: api/HoaDon/5
+        [ResponseType(typeof(HoaDon))]
         [HttpGet]
         public async Task<IHttpActionResult> Get(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            HoaDon hoaDon = await db.HoaDons.FindAsync(id);
+            if (hoaDon == null)
             {
                 return NotFound();
             }
 
-            return Ok(phim);
+            return Ok(hoaDon);
         }
 
-        // PUT: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // PUT: api/HoaDon/5
+        [ResponseType(typeof(HoaDon))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, Phim phim)
+        public async Task<IHttpActionResult> Put(string id, HoaDon hoaDon)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != phim.MaPhim)
+            if (id != hoaDon.MaHD)
             {
                 return BadRequest();
             }
 
-            db.Entry(phim).State = EntityState.Modified;
+            db.Entry(hoaDon).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +62,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PhimExists(id))
+                if (!HoaDonExists(id))
                 {
                     return NotFound();
                 }
@@ -72,20 +72,20 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return Ok(phim);
+            return Ok(hoaDon);
         }
 
-        // POST: api/Phim
-        [ResponseType(typeof(Phim))]
+        // POST: api/HoaDon
+        [ResponseType(typeof(HoaDon))]
         [HttpPost]
-        public async Task<IHttpActionResult> Post(Phim phim)
+        public async Task<IHttpActionResult> Post(HoaDon hoaDon)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Phims.Add(phim);
+            db.HoaDons.Add(hoaDon);
 
             try
             {
@@ -93,7 +93,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateException)
             {
-                if (PhimExists(phim.MaPhim))
+                if (HoaDonExists(hoaDon.MaHD))
                 {
                     return Conflict();
                 }
@@ -103,24 +103,24 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = phim.MaPhim }, phim);
+            return CreatedAtRoute("DefaultApi", new { id = hoaDon.MaHD }, hoaDon);
         }
 
-        // DELETE: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // DELETE: api/HoaDon/5
+        [ResponseType(typeof(HoaDon))]
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            HoaDon hoaDon = await db.HoaDons.FindAsync(id);
+            if (hoaDon == null)
             {
                 return NotFound();
             }
 
-            db.Phims.Remove(phim);
+            db.HoaDons.Remove(hoaDon);
             await db.SaveChangesAsync();
 
-            return Ok(phim);
+            return Ok(hoaDon);
         }
 
         protected override void Dispose(bool disposing)
@@ -132,9 +132,9 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool PhimExists(string id)
+        private bool HoaDonExists(string id)
         {
-            return db.Phims.Count(e => e.MaPhim == id) > 0;
+            return db.HoaDons.Count(e => e.MaHD == id) > 0;
         }
     }
 }

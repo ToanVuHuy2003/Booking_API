@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>H:\FlutterCinemaAPI\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2024-07-06T10:35:42.6666854Z;True|2024-07-06T15:55:50.5924710+07:00;</History>
+    <History>True|2024-07-14T15:39:51.1290661Z;True|2024-07-14T22:37:00.4607048+07:00;True|2024-07-14T22:34:11.0422478+07:00;True|2024-07-14T22:08:55.3371162+07:00;False|2024-07-14T22:07:46.5425013+07:00;True|2024-07-12T16:17:29.9572089+07:00;True|2024-07-11T13:10:31.2289309+07:00;True|2024-07-09T14:17:59.9368418+07:00;True|2024-07-09T11:23:49.2287249+07:00;True|2024-07-08T22:40:38.6228164+07:00;True|2024-07-08T21:58:10.5119406+07:00;True|2024-07-08T21:36:15.6343253+07:00;True|2024-07-08T21:08:43.6394728+07:00;True|2024-07-07T16:55:24.6707973+07:00;True|2024-07-06T21:03:49.9957950+07:00;True|2024-07-06T20:53:43.4701635+07:00;True|2024-07-06T17:35:42.6666854+07:00;True|2024-07-06T15:55:50.5924710+07:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -79,10 +79,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/06/2024 17:35:42</publishTime>
+      <publishTime>07/14/2024 22:39:50</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/06/2024 17:35:41</publishTime>
+      <publishTime>07/14/2024 22:39:50</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/17/2020 03:38:42</publishTime>
@@ -91,10 +91,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/17/2020 03:38:56</publishTime>
     </File>
     <File Include="bin/FlutterCinemaAPI.dll">
-      <publishTime>07/06/2024 17:35:33</publishTime>
+      <publishTime>07/14/2024 22:39:47</publishTime>
     </File>
     <File Include="bin/FlutterCinemaAPI.pdb">
-      <publishTime>07/06/2024 17:35:33</publishTime>
+      <publishTime>07/14/2024 22:39:47</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNetCore.Http.Abstractions.dll">
       <publishTime>05/17/2018 03:18:12</publishTime>
@@ -466,10 +466,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/06/2024 14:04:41</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>07/06/2024 15:05:27</publishTime>
+      <publishTime>07/12/2024 15:59:58</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/06/2024 17:35:33</publishTime>
+      <publishTime>07/14/2024 22:39:47</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>07/06/2024 14:04:43</publishTime>
@@ -544,7 +544,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/06/2024 14:04:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/06/2024 17:35:33</publishTime>
+      <publishTime>07/12/2024 16:17:21</publishTime>
     </File>
   </ItemGroup>
 </Project>

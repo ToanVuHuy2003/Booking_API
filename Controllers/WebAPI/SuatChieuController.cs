@@ -13,48 +13,48 @@ using FlutterCinemaAPI.Models;
 
 namespace FlutterCinemaAPI.Controllers.WebAPI
 {
-    public class PhimController : ApiController
+    public class SuatChieuController : ApiController
     {
         private cinemaAPIEntities db = new cinemaAPIEntities();
 
-        // GET: api/Phim
+        // GET: api/SuatChieu
         [HttpGet]
-        public async Task<List<Phim>> Get()
+        public async Task<List<SuatChieu>> Get()
         {
-            List<Phim> phim = await db.Phims.ToListAsync();
-            return phim;
+            List<SuatChieu> suatChieu = await db.SuatChieux.ToListAsync();
+            return suatChieu;
         }
 
-        // GET: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // GET: api/SuatChieu/5
+        [ResponseType(typeof(SuatChieu))]
         [HttpGet]
         public async Task<IHttpActionResult> Get(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            SuatChieu suatChieu = await db.SuatChieux.FindAsync(id);
+            if (suatChieu == null)
             {
                 return NotFound();
             }
 
-            return Ok(phim);
+            return Ok(suatChieu);
         }
 
-        // PUT: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // PUT: api/SuatChieu/5
+        [ResponseType(typeof(SuatChieu))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, Phim phim)
+        public async Task<IHttpActionResult> Put(string id, SuatChieu suatChieu)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != phim.MaPhim)
+            if (id != suatChieu.MaSC)
             {
                 return BadRequest();
             }
 
-            db.Entry(phim).State = EntityState.Modified;
+            db.Entry(suatChieu).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +62,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PhimExists(id))
+                if (!SuatChieuExists(id))
                 {
                     return NotFound();
                 }
@@ -72,20 +72,20 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return Ok(phim);
+            return Ok(suatChieu);
         }
 
-        // POST: api/Phim
-        [ResponseType(typeof(Phim))]
+        // POST: api/SuatChieu
+        [ResponseType(typeof(SuatChieu))]
         [HttpPost]
-        public async Task<IHttpActionResult> Post(Phim phim)
+        public async Task<IHttpActionResult> Post(SuatChieu suatChieu)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Phims.Add(phim);
+            db.SuatChieux.Add(suatChieu);
 
             try
             {
@@ -93,7 +93,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
             catch (DbUpdateException)
             {
-                if (PhimExists(phim.MaPhim))
+                if (SuatChieuExists(suatChieu.MaSC))
                 {
                     return Conflict();
                 }
@@ -103,24 +103,24 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = phim.MaPhim }, phim);
+            return CreatedAtRoute("DefaultApi", new { id = suatChieu.MaSC }, suatChieu);
         }
 
-        // DELETE: api/Phim/5
-        [ResponseType(typeof(Phim))]
+        // DELETE: api/SuatChieu/5
+        [ResponseType(typeof(SuatChieu))]
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(string id)
         {
-            Phim phim = await db.Phims.FindAsync(id);
-            if (phim == null)
+            SuatChieu suatChieu = await db.SuatChieux.FindAsync(id);
+            if (suatChieu == null)
             {
                 return NotFound();
             }
 
-            db.Phims.Remove(phim);
+            db.SuatChieux.Remove(suatChieu);
             await db.SaveChangesAsync();
 
-            return Ok(phim);
+            return Ok(suatChieu);
         }
 
         protected override void Dispose(bool disposing)
@@ -132,9 +132,9 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool PhimExists(string id)
+        private bool SuatChieuExists(string id)
         {
-            return db.Phims.Count(e => e.MaPhim == id) > 0;
+            return db.SuatChieux.Count(e => e.MaSC == id) > 0;
         }
     }
 }
