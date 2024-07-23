@@ -28,7 +28,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // GET: api/Phim/5
         [ResponseType(typeof(Phim))]
         [HttpGet]
-        public async Task<IHttpActionResult> Get(string id)
+        public async Task<IHttpActionResult> Get(int id)
         {
             Phim phim = await db.Phims.FindAsync(id);
             if (phim == null)
@@ -42,7 +42,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // PUT: api/Phim/5
         [ResponseType(typeof(Phim))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, Phim phim)
+        public async Task<IHttpActionResult> Put(int id, Phim phim)
         {
             if (!ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // DELETE: api/Phim/5
         [ResponseType(typeof(Phim))]
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(string id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             Phim phim = await db.Phims.FindAsync(id);
             if (phim == null)
@@ -132,7 +132,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool PhimExists(string id)
+        private bool PhimExists(int id)
         {
             return db.Phims.Count(e => e.MaPhim == id) > 0;
         }

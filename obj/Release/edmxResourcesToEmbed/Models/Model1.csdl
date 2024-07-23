@@ -4,9 +4,9 @@
     <Key>
       <PropertyRef Name="MaDat" />
     </Key>
-    <Property Name="MaDat" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-    <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="MaDat" Type="Int32" Nullable="false" />
+    <Property Name="MaPhim" Type="Int32" />
+    <Property Name="MaKH" Type="Int32" />
     <Property Name="Ghe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="GiaTien" Type="Double" />
     <Property Name="ThoiGianDat" Type="DateTime" Precision="3" />
@@ -18,9 +18,9 @@
     <Key>
       <PropertyRef Name="MaHD" />
     </Key>
-    <Property Name="MaHD" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-    <Property Name="MaDat" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="MaHD" Type="Int32" Nullable="false" />
+    <Property Name="MaKH" Type="Int32" />
+    <Property Name="MaDat" Type="Int32" />
     <Property Name="SoLuong" Type="Int32" />
     <Property Name="ThoiGianTT" Type="DateTime" Precision="3" />
     <NavigationProperty Name="DatVe" Relationship="Self.fk_HoaDon_DatVe" FromRole="HoaDon" ToRole="DatVe" />
@@ -30,7 +30,7 @@
     <Key>
       <PropertyRef Name="MaKH" />
     </Key>
-    <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaKH" Type="Int32" Nullable="false" />
     <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -43,11 +43,11 @@
     <Key>
       <PropertyRef Name="MaPhim" />
     </Key>
-    <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaPhim" Type="Int32" Nullable="false" />
     <Property Name="TenPhim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AnhPhim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DaoDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="MaTL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="MaTL" Type="Int32" />
     <Property Name="NgonNgu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DatVes" Relationship="Self.fk_DatVe_Phim" FromRole="Phim" ToRole="DatVe" />
@@ -58,8 +58,8 @@
     <Key>
       <PropertyRef Name="MaSC" />
     </Key>
-    <Property Name="MaSC" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="MaSC" Type="Int32" Nullable="false" />
+    <Property Name="MaPhim" Type="Int32" />
     <Property Name="ThoiGianBD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ThoiGianKT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NgayChieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -70,7 +70,7 @@
     <Key>
       <PropertyRef Name="MaTL" />
     </Key>
-    <Property Name="MaTL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaTL" Type="Int32" Nullable="false" />
     <Property Name="TenTL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Phims" Relationship="Self.fk_Phim_TheLoai" FromRole="TheLoai" ToRole="Phim" />
   </EntityType>

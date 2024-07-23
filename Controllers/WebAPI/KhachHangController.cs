@@ -64,7 +64,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // GET: api/KhachHang/5
         [ResponseType(typeof(KhachHang))]
         [HttpGet]
-        public async Task<IHttpActionResult> Get(string id)
+        public async Task<IHttpActionResult> Get(int id)
         {
             KhachHang khachHang = await db.KhachHangs.FindAsync(id);
             if (khachHang == null)
@@ -75,10 +75,29 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             return Ok(khachHang);
         }
 
+        [HttpGet]
+        [Route("api/KhachHang/GetPassword")]
+        public async Task<IHttpActionResult> GetPassword(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return BadRequest("Email không được để trống");
+            }
+
+            var khachHang = await db.KhachHangs.FirstOrDefaultAsync(k => k.Email == email);
+
+            if (khachHang == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new { MatKhau = khachHang.MatKhau });
+        }
+
         // PUT: api/KhachHang/5
         [ResponseType(typeof(KhachHang))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, KhachHang khachHang)
+        public async Task<IHttpActionResult> Put(int id, KhachHang khachHang)
         {
             if (!ModelState.IsValid)
             {
@@ -124,7 +143,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             }
 
             string otp = GenerateOTP();
-            Session.Add("OTP", otp, TimeSpan.FromMinutes(2));
+            Session.Add("OTP", otp, TimeSpan.FromMinutes(5));
 
             string emailBody = $"Mã OTP của bạn là: {otp}";
 
@@ -201,7 +220,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // DELETE: api/KhachHang/5
         [ResponseType(typeof(KhachHang))]
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(string id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             KhachHang khachHang = await db.KhachHangs.FindAsync(id);
             if (khachHang == null)
@@ -224,7 +243,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool KhachHangExists(string id)
+        private bool KhachHangExists(int id)
         {
             return db.KhachHangs.Count(e => e.MaKH == id) > 0;
         }

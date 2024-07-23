@@ -22,11 +22,11 @@ namespace FlutterCinemaAPI.Models
             this.SuatChieux = new HashSet<SuatChieu>();
         }
     
-        public string MaPhim { get; set; }
+        public int MaPhim { get; set; }
         public string TenPhim { get; set; }
         public string AnhPhim { get; set; }
         public string DaoDien { get; set; }
-        public string MaTL { get; set; }
+        public Nullable<int> MaTL { get; set; }
         public string NgonNgu { get; set; }
         public string MoTa { get; set; }
     

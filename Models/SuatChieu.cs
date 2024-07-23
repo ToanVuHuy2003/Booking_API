@@ -15,8 +15,8 @@ namespace FlutterCinemaAPI.Models
     
     public partial class SuatChieu
     {
-        public string MaSC { get; set; }
-        public string MaPhim { get; set; }
+        public int MaSC { get; set; }
+        public Nullable<int> MaPhim { get; set; }
         public string ThoiGianBD { get; set; }
         public string ThoiGianKT { get; set; }
         public string NgayChieu { get; set; }

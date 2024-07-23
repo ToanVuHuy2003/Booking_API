@@ -9,9 +9,9 @@
           <Key>
             <PropertyRef Name="MaDat" />
           </Key>
-          <Property Name="MaDat" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="MaPhim" Type="char" MaxLength="4" />
-          <Property Name="MaKH" Type="char" MaxLength="4" />
+          <Property Name="MaDat" Type="int" Nullable="false" />
+          <Property Name="MaPhim" Type="int" />
+          <Property Name="MaKH" Type="int" />
           <Property Name="Ghe" Type="nvarchar(max)" />
           <Property Name="GiaTien" Type="float" />
           <Property Name="ThoiGianDat" Type="datetime" />
@@ -20,9 +20,9 @@
           <Key>
             <PropertyRef Name="MaHD" />
           </Key>
-          <Property Name="MaHD" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="MaKH" Type="char" MaxLength="4" />
-          <Property Name="MaDat" Type="char" MaxLength="4" />
+          <Property Name="MaHD" Type="int" Nullable="false" />
+          <Property Name="MaKH" Type="int" />
+          <Property Name="MaDat" Type="int" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="ThoiGianTT" Type="datetime" />
         </EntityType>
@@ -30,7 +30,7 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaKH" Type="int" Nullable="false" />
           <Property Name="HoTen" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar(max)" />
           <Property Name="MatKhau" Type="nvarchar(max)" />
@@ -41,11 +41,11 @@
           <Key>
             <PropertyRef Name="MaPhim" />
           </Key>
-          <Property Name="MaPhim" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaPhim" Type="int" Nullable="false" />
           <Property Name="TenPhim" Type="nvarchar(max)" />
           <Property Name="AnhPhim" Type="nvarchar(max)" />
           <Property Name="DaoDien" Type="nvarchar(max)" />
-          <Property Name="MaTL" Type="char" MaxLength="4" />
+          <Property Name="MaTL" Type="int" />
           <Property Name="NgonNgu" Type="nvarchar(max)" />
           <Property Name="MoTa" Type="nvarchar(max)" />
         </EntityType>
@@ -53,8 +53,8 @@
           <Key>
             <PropertyRef Name="MaSC" />
           </Key>
-          <Property Name="MaSC" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="MaPhim" Type="char" MaxLength="4" />
+          <Property Name="MaSC" Type="int" Nullable="false" />
+          <Property Name="MaPhim" Type="int" />
           <Property Name="ThoiGianBD" Type="nvarchar(max)" />
           <Property Name="ThoiGianKT" Type="nvarchar(max)" />
           <Property Name="NgayChieu" Type="nvarchar(max)" />
@@ -64,7 +64,7 @@
           <Key>
             <PropertyRef Name="MaTL" />
           </Key>
-          <Property Name="MaTL" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaTL" Type="int" Nullable="false" />
           <Property Name="TenTL" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="fk_DatVe_KH">
@@ -180,9 +180,9 @@
           <Key>
             <PropertyRef Name="MaDat" />
           </Key>
-          <Property Name="MaDat" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MaDat" Type="Int32" Nullable="false" />
+          <Property Name="MaPhim" Type="Int32" />
+          <Property Name="MaKH" Type="Int32" />
           <Property Name="Ghe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GiaTien" Type="Double" />
           <Property Name="ThoiGianDat" Type="DateTime" Precision="3" />
@@ -194,9 +194,9 @@
           <Key>
             <PropertyRef Name="MaHD" />
           </Key>
-          <Property Name="MaHD" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="MaDat" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MaHD" Type="Int32" Nullable="false" />
+          <Property Name="MaKH" Type="Int32" />
+          <Property Name="MaDat" Type="Int32" />
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="ThoiGianTT" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DatVe" Relationship="Self.fk_HoaDon_DatVe" FromRole="HoaDon" ToRole="DatVe" />
@@ -206,7 +206,7 @@
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaKH" Type="Int32" Nullable="false" />
           <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -219,11 +219,11 @@
           <Key>
             <PropertyRef Name="MaPhim" />
           </Key>
-          <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPhim" Type="Int32" Nullable="false" />
           <Property Name="TenPhim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnhPhim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DaoDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MaTL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MaTL" Type="Int32" />
           <Property Name="NgonNgu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DatVes" Relationship="Self.fk_DatVe_Phim" FromRole="Phim" ToRole="DatVe" />
@@ -234,8 +234,8 @@
           <Key>
             <PropertyRef Name="MaSC" />
           </Key>
-          <Property Name="MaSC" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MaSC" Type="Int32" Nullable="false" />
+          <Property Name="MaPhim" Type="Int32" />
           <Property Name="ThoiGianBD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGianKT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayChieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -246,7 +246,7 @@
           <Key>
             <PropertyRef Name="MaTL" />
           </Key>
-          <Property Name="MaTL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaTL" Type="Int32" Nullable="false" />
           <Property Name="TenTL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Phims" Relationship="Self.fk_Phim_TheLoai" FromRole="TheLoai" ToRole="Phim" />
         </EntityType>

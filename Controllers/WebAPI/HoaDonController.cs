@@ -28,9 +28,9 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // GET: api/HoaDon/GetByIDOrCustomerID
         [HttpGet]
         [Route("api/HoaDon/GetByID")]
-        public async Task<IHttpActionResult> GetById(string id = null, string MaKH = null)
+        public async Task<IHttpActionResult> GetById(int? id = null, int? MaKH = null)
         {
-            if (!string.IsNullOrEmpty(id))
+            if (id.HasValue)
             {
                 // Tìm kiếm hóa đơn theo ID
                 HoaDon hoaDon = await db.HoaDons.FindAsync(id);
@@ -40,10 +40,10 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 }
                 return Ok(hoaDon);
             }
-            else if (!string.IsNullOrEmpty(MaKH))
+            else if (MaKH.HasValue)
             {
                 // Tìm kiếm hóa đơn theo mã khách hàng
-                var hoaDons = await db.HoaDons.Where(h => h.MaKH == MaKH).ToListAsync();
+                var hoaDons = await db.HoaDons.Where(h => h.MaKH == MaKH.Value).ToListAsync();
                 if (hoaDons == null || !hoaDons.Any())
                 {
                     return NotFound();
@@ -60,7 +60,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // PUT: api/HoaDon/5
         [ResponseType(typeof(HoaDon))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, HoaDon hoaDon)
+        public async Task<IHttpActionResult> Put(int id, HoaDon hoaDon)
         {
             if (!ModelState.IsValid)
             {
@@ -127,7 +127,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // DELETE: api/HoaDon/5
         [ResponseType(typeof(HoaDon))]
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(string id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             HoaDon hoaDon = await db.HoaDons.FindAsync(id);
             if (hoaDon == null)
@@ -150,7 +150,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool HoaDonExists(string id)
+        private bool HoaDonExists(int id)
         {
             return db.HoaDons.Count(e => e.MaHD == id) > 0;
         }

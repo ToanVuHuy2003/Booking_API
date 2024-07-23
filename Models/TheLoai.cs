@@ -21,7 +21,7 @@ namespace FlutterCinemaAPI.Models
             this.Phims = new HashSet<Phim>();
         }
     
-        public string MaTL { get; set; }
+        public int MaTL { get; set; }
         public string TenTL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

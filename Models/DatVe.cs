@@ -21,9 +21,9 @@ namespace FlutterCinemaAPI.Models
             this.HoaDons = new HashSet<HoaDon>();
         }
     
-        public string MaDat { get; set; }
-        public string MaPhim { get; set; }
-        public string MaKH { get; set; }
+        public int MaDat { get; set; }
+        public Nullable<int> MaPhim { get; set; }
+        public Nullable<int> MaKH { get; set; }
         public string Ghe { get; set; }
         public Nullable<double> GiaTien { get; set; }
         public Nullable<System.DateTime> ThoiGianDat { get; set; }

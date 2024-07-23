@@ -28,7 +28,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // GET: api/SuatChieu/5
         [ResponseType(typeof(SuatChieu))]
         [HttpGet]
-        public async Task<IHttpActionResult> Get(string id)
+        public async Task<IHttpActionResult> Get(int id)
         {
             SuatChieu suatChieu = await db.SuatChieux.FindAsync(id);
             if (suatChieu == null)
@@ -42,7 +42,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // PUT: api/SuatChieu/5
         [ResponseType(typeof(SuatChieu))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, SuatChieu suatChieu)
+        public async Task<IHttpActionResult> Put(int id, SuatChieu suatChieu)
         {
             if (!ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // DELETE: api/SuatChieu/5
         [ResponseType(typeof(SuatChieu))]
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(string id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             SuatChieu suatChieu = await db.SuatChieux.FindAsync(id);
             if (suatChieu == null)
@@ -132,7 +132,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool SuatChieuExists(string id)
+        private bool SuatChieuExists(int id)
         {
             return db.SuatChieux.Count(e => e.MaSC == id) > 0;
         }

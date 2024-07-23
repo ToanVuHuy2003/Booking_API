@@ -28,7 +28,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // GET: api/TheLoai/5
         [ResponseType(typeof(TheLoai))]
         [HttpGet]
-        public async Task<IHttpActionResult> Get(string id)
+        public async Task<IHttpActionResult> Get(int id)
         {
             TheLoai theLoai = await db.TheLoais.FindAsync(id);
             if (theLoai == null)
@@ -42,7 +42,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // PUT: api/TheLoai/5
         [ResponseType(typeof(TheLoai))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, TheLoai theLoai)
+        public async Task<IHttpActionResult> Put(int id, TheLoai theLoai)
         {
             if (!ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // DELETE: api/TheLoai/5
         [ResponseType(typeof(TheLoai))]
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(string id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             TheLoai theLoai = await db.TheLoais.FindAsync(id);
             if (theLoai == null)
@@ -132,7 +132,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool TheLoaiExists(string id)
+        private bool TheLoaiExists(int id)
         {
             return db.TheLoais.Count(e => e.MaTL == id) > 0;
         }

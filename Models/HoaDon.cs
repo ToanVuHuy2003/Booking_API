@@ -14,9 +14,9 @@ namespace FlutterCinemaAPI.Models
     
     public partial class HoaDon
     {
-        public string MaHD { get; set; }
-        public string MaKH { get; set; }
-        public string MaDat { get; set; }
+        public int MaHD { get; set; }
+        public Nullable<int> MaKH { get; set; }
+        public Nullable<int> MaDat { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<System.DateTime> ThoiGianTT { get; set; }
     

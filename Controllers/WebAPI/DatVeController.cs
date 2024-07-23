@@ -28,7 +28,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // GET: api/DatVe/5
         [ResponseType(typeof(DatVe))]
         [HttpGet]
-        public async Task<IHttpActionResult> Get(string id)
+        public async Task<IHttpActionResult> Get(int id)
         {
             DatVe datVe = await db.DatVes.FindAsync(id);
             if (datVe == null)
@@ -42,7 +42,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // PUT: api/DatVe/5
         [ResponseType(typeof(DatVe))]
         [HttpPut]
-        public async Task<IHttpActionResult> Put(string id, DatVe datVe)
+        public async Task<IHttpActionResult> Put(int id, DatVe datVe)
         {
             if (!ModelState.IsValid)
             {
@@ -85,9 +85,6 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 return BadRequest(ModelState);
             }
 
-            // Đặt giá tiền mặc định là 70.000 VND
-            datVe.GiaTien = 70000;
-
             db.DatVes.Add(datVe);
 
             try
@@ -112,7 +109,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
         // DELETE: api/DatVe/5
         [ResponseType(typeof(DatVe))]
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(string id)
+        public async Task<IHttpActionResult> Delete(int id)
         {
             DatVe datVe = await db.DatVes.FindAsync(id);
             if (datVe == null)
@@ -135,7 +132,7 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             base.Dispose(disposing);
         }
 
-        private bool DatVeExists(string id)
+        private bool DatVeExists(int id)
         {
             return db.DatVes.Count(e => e.MaDat == id) > 0;
         }
