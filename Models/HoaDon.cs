@@ -16,13 +16,11 @@ namespace FlutterCinemaAPI.Models
     {
         public string MaHD { get; set; }
         public string MaKH { get; set; }
-        public string MaSC { get; set; }
         public string MaDat { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<System.DateTime> ThoiGianTT { get; set; }
     
         public virtual DatVe DatVe { get; set; }
         public virtual KhachHang KhachHang { get; set; }
-        public virtual SuatChieu SuatChieu { get; set; }
     }
 }

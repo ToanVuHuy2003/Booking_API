@@ -4,9 +4,9 @@
     <Key>
       <PropertyRef Name="MaDat" />
     </Key>
-    <Property Name="MaDat" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="MaSC" Type="char" MaxLength="10" />
-    <Property Name="MaKH" Type="char" MaxLength="10" />
+    <Property Name="MaDat" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="MaPhim" Type="char" MaxLength="4" />
+    <Property Name="MaKH" Type="char" MaxLength="4" />
     <Property Name="Ghe" Type="nvarchar(max)" />
     <Property Name="GiaTien" Type="float" />
     <Property Name="ThoiGianDat" Type="datetime" />
@@ -15,10 +15,9 @@
     <Key>
       <PropertyRef Name="MaHD" />
     </Key>
-    <Property Name="MaHD" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="MaKH" Type="char" MaxLength="10" />
-    <Property Name="MaSC" Type="char" MaxLength="10" />
-    <Property Name="MaDat" Type="char" MaxLength="10" />
+    <Property Name="MaHD" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="MaKH" Type="char" MaxLength="4" />
+    <Property Name="MaDat" Type="char" MaxLength="4" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="ThoiGianTT" Type="datetime" />
   </EntityType>
@@ -26,7 +25,7 @@
     <Key>
       <PropertyRef Name="MaKH" />
     </Key>
-    <Property Name="MaKH" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MaKH" Type="char" MaxLength="4" Nullable="false" />
     <Property Name="HoTen" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar(max)" />
     <Property Name="MatKhau" Type="nvarchar(max)" />
@@ -37,11 +36,11 @@
     <Key>
       <PropertyRef Name="MaPhim" />
     </Key>
-    <Property Name="MaPhim" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MaPhim" Type="char" MaxLength="4" Nullable="false" />
     <Property Name="TenPhim" Type="nvarchar(max)" />
     <Property Name="AnhPhim" Type="nvarchar(max)" />
     <Property Name="DaoDien" Type="nvarchar(max)" />
-    <Property Name="MaTL" Type="char" MaxLength="10" />
+    <Property Name="MaTL" Type="char" MaxLength="4" />
     <Property Name="NgonNgu" Type="nvarchar(max)" />
     <Property Name="MoTa" Type="nvarchar(max)" />
   </EntityType>
@@ -49,8 +48,8 @@
     <Key>
       <PropertyRef Name="MaSC" />
     </Key>
-    <Property Name="MaSC" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="MaPhim" Type="char" MaxLength="10" />
+    <Property Name="MaSC" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="MaPhim" Type="char" MaxLength="4" />
     <Property Name="ThoiGianBD" Type="nvarchar(max)" />
     <Property Name="ThoiGianKT" Type="nvarchar(max)" />
     <Property Name="NgayChieu" Type="nvarchar(max)" />
@@ -60,7 +59,7 @@
     <Key>
       <PropertyRef Name="MaTL" />
     </Key>
-    <Property Name="MaTL" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MaTL" Type="char" MaxLength="4" Nullable="false" />
     <Property Name="TenTL" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="fk_DatVe_KH">
@@ -75,15 +74,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_DatVe_SC">
-    <End Role="SuatChieu" Type="Self.SuatChieu" Multiplicity="0..1" />
+  <Association Name="fk_DatVe_Phim">
+    <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
     <End Role="DatVe" Type="Self.DatVe" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="SuatChieu">
-        <PropertyRef Name="MaSC" />
+      <Principal Role="Phim">
+        <PropertyRef Name="MaPhim" />
       </Principal>
       <Dependent Role="DatVe">
-        <PropertyRef Name="MaSC" />
+        <PropertyRef Name="MaPhim" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -108,18 +107,6 @@
       </Principal>
       <Dependent Role="HoaDon">
         <PropertyRef Name="MaKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_HoaDon_SC">
-    <End Role="SuatChieu" Type="Self.SuatChieu" Multiplicity="0..1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SuatChieu">
-        <PropertyRef Name="MaSC" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaSC" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -158,8 +145,8 @@
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="DatVe" EntitySet="DatVe" />
     </AssociationSet>
-    <AssociationSet Name="fk_DatVe_SC" Association="Self.fk_DatVe_SC">
-      <End Role="SuatChieu" EntitySet="SuatChieu" />
+    <AssociationSet Name="fk_DatVe_Phim" Association="Self.fk_DatVe_Phim">
+      <End Role="Phim" EntitySet="Phim" />
       <End Role="DatVe" EntitySet="DatVe" />
     </AssociationSet>
     <AssociationSet Name="fk_HoaDon_DatVe" Association="Self.fk_HoaDon_DatVe">
@@ -168,10 +155,6 @@
     </AssociationSet>
     <AssociationSet Name="fk_HoaDon_KH" Association="Self.fk_HoaDon_KH">
       <End Role="KhachHang" EntitySet="KhachHang" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_SC" Association="Self.fk_HoaDon_SC">
-      <End Role="SuatChieu" EntitySet="SuatChieu" />
       <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>
     <AssociationSet Name="fk_Phim_TheLoai" Association="Self.fk_Phim_TheLoai">

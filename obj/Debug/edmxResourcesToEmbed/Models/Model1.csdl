@@ -4,35 +4,33 @@
     <Key>
       <PropertyRef Name="MaDat" />
     </Key>
-    <Property Name="MaDat" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MaSC" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaDat" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
     <Property Name="Ghe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="GiaTien" Type="Double" />
     <Property Name="ThoiGianDat" Type="DateTime" Precision="3" />
     <NavigationProperty Name="KhachHang" Relationship="Self.fk_DatVe_KH" FromRole="DatVe" ToRole="KhachHang" />
-    <NavigationProperty Name="SuatChieu" Relationship="Self.fk_DatVe_SC" FromRole="DatVe" ToRole="SuatChieu" />
+    <NavigationProperty Name="Phim" Relationship="Self.fk_DatVe_Phim" FromRole="DatVe" ToRole="Phim" />
     <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_DatVe" FromRole="DatVe" ToRole="HoaDon" />
   </EntityType>
   <EntityType Name="HoaDon">
     <Key>
       <PropertyRef Name="MaHD" />
     </Key>
-    <Property Name="MaHD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="MaSC" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="MaDat" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaHD" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="MaDat" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
     <Property Name="SoLuong" Type="Int32" />
     <Property Name="ThoiGianTT" Type="DateTime" Precision="3" />
     <NavigationProperty Name="DatVe" Relationship="Self.fk_HoaDon_DatVe" FromRole="HoaDon" ToRole="DatVe" />
     <NavigationProperty Name="KhachHang" Relationship="Self.fk_HoaDon_KH" FromRole="HoaDon" ToRole="KhachHang" />
-    <NavigationProperty Name="SuatChieu" Relationship="Self.fk_HoaDon_SC" FromRole="HoaDon" ToRole="SuatChieu" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
       <PropertyRef Name="MaKH" />
     </Key>
-    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaKH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -45,13 +43,14 @@
     <Key>
       <PropertyRef Name="MaPhim" />
     </Key>
-    <Property Name="MaPhim" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TenPhim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AnhPhim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DaoDien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="MaTL" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaTL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
     <Property Name="NgonNgu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DatVes" Relationship="Self.fk_DatVe_Phim" FromRole="Phim" ToRole="DatVe" />
     <NavigationProperty Name="TheLoai" Relationship="Self.fk_Phim_TheLoai" FromRole="Phim" ToRole="TheLoai" />
     <NavigationProperty Name="SuatChieux" Relationship="Self.fk_SC_Phim" FromRole="Phim" ToRole="SuatChieu" />
   </EntityType>
@@ -59,21 +58,19 @@
     <Key>
       <PropertyRef Name="MaSC" />
     </Key>
-    <Property Name="MaSC" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MaPhim" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaSC" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaPhim" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
     <Property Name="ThoiGianBD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ThoiGianKT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NgayChieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="RapChieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="DatVes" Relationship="Self.fk_DatVe_SC" FromRole="SuatChieu" ToRole="DatVe" />
-    <NavigationProperty Name="HoaDons" Relationship="Self.fk_HoaDon_SC" FromRole="SuatChieu" ToRole="HoaDon" />
     <NavigationProperty Name="Phim" Relationship="Self.fk_SC_Phim" FromRole="SuatChieu" ToRole="Phim" />
   </EntityType>
   <EntityType Name="TheLoai">
     <Key>
       <PropertyRef Name="MaTL" />
     </Key>
-    <Property Name="MaTL" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaTL" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TenTL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Phims" Relationship="Self.fk_Phim_TheLoai" FromRole="TheLoai" ToRole="Phim" />
   </EntityType>
@@ -89,15 +86,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_DatVe_SC">
-    <End Role="SuatChieu" Type="Self.SuatChieu" Multiplicity="0..1" />
+  <Association Name="fk_DatVe_Phim">
+    <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
     <End Role="DatVe" Type="Self.DatVe" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="SuatChieu">
-        <PropertyRef Name="MaSC" />
+      <Principal Role="Phim">
+        <PropertyRef Name="MaPhim" />
       </Principal>
       <Dependent Role="DatVe">
-        <PropertyRef Name="MaSC" />
+        <PropertyRef Name="MaPhim" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -122,18 +119,6 @@
       </Principal>
       <Dependent Role="HoaDon">
         <PropertyRef Name="MaKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_HoaDon_SC">
-    <End Role="SuatChieu" Type="Self.SuatChieu" Multiplicity="0..1" />
-    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SuatChieu">
-        <PropertyRef Name="MaSC" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaSC" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -172,8 +157,8 @@
       <End Role="KhachHang" EntitySet="KhachHangs" />
       <End Role="DatVe" EntitySet="DatVes" />
     </AssociationSet>
-    <AssociationSet Name="fk_DatVe_SC" Association="Self.fk_DatVe_SC">
-      <End Role="SuatChieu" EntitySet="SuatChieux" />
+    <AssociationSet Name="fk_DatVe_Phim" Association="Self.fk_DatVe_Phim">
+      <End Role="Phim" EntitySet="Phims" />
       <End Role="DatVe" EntitySet="DatVes" />
     </AssociationSet>
     <AssociationSet Name="fk_HoaDon_DatVe" Association="Self.fk_HoaDon_DatVe">
@@ -182,10 +167,6 @@
     </AssociationSet>
     <AssociationSet Name="fk_HoaDon_KH" Association="Self.fk_HoaDon_KH">
       <End Role="KhachHang" EntitySet="KhachHangs" />
-      <End Role="HoaDon" EntitySet="HoaDons" />
-    </AssociationSet>
-    <AssociationSet Name="fk_HoaDon_SC" Association="Self.fk_HoaDon_SC">
-      <End Role="SuatChieu" EntitySet="SuatChieux" />
       <End Role="HoaDon" EntitySet="HoaDons" />
     </AssociationSet>
     <AssociationSet Name="fk_Phim_TheLoai" Association="Self.fk_Phim_TheLoai">

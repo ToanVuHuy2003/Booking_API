@@ -9,6 +9,7 @@
 
 namespace FlutterCinemaAPI.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -17,6 +18,7 @@ namespace FlutterCinemaAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Phim()
         {
+            this.DatVes = new HashSet<DatVe>();
             this.SuatChieux = new HashSet<SuatChieu>();
         }
     
@@ -28,6 +30,9 @@ namespace FlutterCinemaAPI.Models
         public string NgonNgu { get; set; }
         public string MoTa { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
+        public virtual ICollection<DatVe> DatVes { get; set; }
         public virtual TheLoai TheLoai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SuatChieu> SuatChieux { get; set; }

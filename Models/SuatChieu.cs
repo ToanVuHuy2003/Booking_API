@@ -9,29 +9,20 @@
 
 namespace FlutterCinemaAPI.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
     public partial class SuatChieu
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SuatChieu()
-        {
-            this.DatVes = new HashSet<DatVe>();
-            this.HoaDons = new HashSet<HoaDon>();
-        }
-    
         public string MaSC { get; set; }
         public string MaPhim { get; set; }
         public string ThoiGianBD { get; set; }
         public string ThoiGianKT { get; set; }
         public string NgayChieu { get; set; }
         public string RapChieu { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DatVe> DatVes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+
+        [JsonIgnore]
         public virtual Phim Phim { get; set; }
     }
 }

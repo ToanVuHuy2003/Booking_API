@@ -23,9 +23,9 @@ namespace FlutterCinemaAPI.Models
     
         public string MaTL { get; set; }
         public string TenTL { get; set; }
-
-        [JsonIgnore] 
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Phim> Phims { get; set; }
     }
 }

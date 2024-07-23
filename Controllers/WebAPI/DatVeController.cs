@@ -85,6 +85,9 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
                 return BadRequest(ModelState);
             }
 
+            // Đặt giá tiền mặc định là 70.000 VND
+            datVe.GiaTien = 70000;
+
             db.DatVes.Add(datVe);
 
             try

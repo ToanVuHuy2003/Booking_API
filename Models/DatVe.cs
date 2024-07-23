@@ -9,6 +9,7 @@
 
 namespace FlutterCinemaAPI.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -21,15 +22,16 @@ namespace FlutterCinemaAPI.Models
         }
     
         public string MaDat { get; set; }
-        public string MaSC { get; set; }
+        public string MaPhim { get; set; }
         public string MaKH { get; set; }
         public string Ghe { get; set; }
         public Nullable<double> GiaTien { get; set; }
         public Nullable<System.DateTime> ThoiGianDat { get; set; }
     
         public virtual KhachHang KhachHang { get; set; }
-        public virtual SuatChieu SuatChieu { get; set; }
+        public virtual Phim Phim { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

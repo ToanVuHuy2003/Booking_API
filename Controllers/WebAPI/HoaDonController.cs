@@ -25,18 +25,36 @@ namespace FlutterCinemaAPI.Controllers.WebAPI
             return hoaDon;
         }
 
-        // GET: api/HoaDon/5
-        [ResponseType(typeof(HoaDon))]
+        // GET: api/HoaDon/GetByIDOrCustomerID
         [HttpGet]
-        public async Task<IHttpActionResult> Get(string id)
+        [Route("api/HoaDon/GetByID")]
+        public async Task<IHttpActionResult> GetById(string id = null, string MaKH = null)
         {
-            HoaDon hoaDon = await db.HoaDons.FindAsync(id);
-            if (hoaDon == null)
+            if (!string.IsNullOrEmpty(id))
             {
-                return NotFound();
+                // Tìm kiếm hóa đơn theo ID
+                HoaDon hoaDon = await db.HoaDons.FindAsync(id);
+                if (hoaDon == null)
+                {
+                    return NotFound();
+                }
+                return Ok(hoaDon);
             }
-
-            return Ok(hoaDon);
+            else if (!string.IsNullOrEmpty(MaKH))
+            {
+                // Tìm kiếm hóa đơn theo mã khách hàng
+                var hoaDons = await db.HoaDons.Where(h => h.MaKH == MaKH).ToListAsync();
+                if (hoaDons == null || !hoaDons.Any())
+                {
+                    return NotFound();
+                }
+                return Ok(hoaDons);
+            }
+            else
+            {
+                // Không có ID hoặc mã khách hàng được cung cấp
+                return BadRequest("Vui lòng cung cấp ID hóa đơn hoặc mã khách hàng.");
+            }
         }
 
         // PUT: api/HoaDon/5

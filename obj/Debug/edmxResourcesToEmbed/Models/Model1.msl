@@ -5,7 +5,7 @@
       <EntityTypeMapping TypeName="cinemaAPIModel.DatVe">
         <MappingFragment StoreEntitySet="DatVe">
           <ScalarProperty Name="MaDat" ColumnName="MaDat" />
-          <ScalarProperty Name="MaSC" ColumnName="MaSC" />
+          <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="Ghe" ColumnName="Ghe" />
           <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
@@ -18,7 +18,6 @@
         <MappingFragment StoreEntitySet="HoaDon">
           <ScalarProperty Name="MaHD" ColumnName="MaHD" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-          <ScalarProperty Name="MaSC" ColumnName="MaSC" />
           <ScalarProperty Name="MaDat" ColumnName="MaDat" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="ThoiGianTT" ColumnName="ThoiGianTT" />

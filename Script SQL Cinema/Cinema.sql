@@ -4,7 +4,7 @@ use cinemaAPI
 go
 
 create table KhachHang(
-	MaKH char(10) primary key,
+	MaKH char(4) primary key,
 	HoTen nvarchar(max),
 	Email nvarchar(max),
 	MatKhau nvarchar(max),
@@ -13,23 +13,23 @@ create table KhachHang(
 );
 
 create table Phim(
-	MaPhim char(10) primary key,
+	MaPhim char(4) primary key,
 	TenPhim nvarchar(max),
 	AnhPhim nvarchar(max),
 	DaoDien nvarchar(max),
-	MaTL char(10),
+	MaTL char(4),
 	NgonNgu nvarchar(max),
 	MoTa nvarchar(max)
 );
 
 create table TheLoai(
-	MaTL char(10) primary key,
+	MaTL char(4) primary key,
 	TenTL nvarchar(max)
 );
 
 create table SuatChieu(
-	MaSC char(10) primary key,
-	MaPhim char(10),
+	MaSC char(4) primary key,
+	MaPhim char(4),
 	ThoiGianBD nvarchar(max),
 	ThoiGianKT nvarchar(max),
 	NgayChieu nvarchar(max),
@@ -37,19 +37,18 @@ create table SuatChieu(
 );
 
 create table DatVe(
-	MaDat char(10) primary key,
-	MaSC char(10),
-	MaKH char(10),
+	MaDat char(4) primary key,
+	MaPhim char(4),
+	MaKH char(4),
 	Ghe nvarchar(max),
 	GiaTien float,
 	ThoiGianDat datetime
 );
 
 create table HoaDon(
-	MaHD char(10) primary key,
-	MaKH char(10),
-	MaSC char(10),
-	MaDat char(10),
+	MaHD char(4) primary key,
+	MaKH char(4),
+	MaDat char(4),
 	SoLuong int,
 	ThoiGianTT datetime
 );
@@ -60,4 +59,3 @@ alter table DatVe add constraint fk_DatVe_SC foreign key (MaSC) references SuatC
 alter table DatVe add constraint fk_DatVe_KH foreign key (MaKH) references KhachHang(MaKH);
 alter table HoaDon add constraint fk_HoaDon_DatVe foreign key (MaDat) references DatVe(MaDat);
 alter table HoaDon add constraint fk_HoaDon_KH foreign key (MaKH) references KhachHang(MaKH);
-alter table HoaDon add constraint fk_HoaDon_SC foreign key (MaSC) references SuatChieu(MaSC);
